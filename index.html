@@ -250,99 +250,7 @@
     animation: fadeIn 2s ease;
   }
 
- #intro-container {
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0; left: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  overflow: hidden;
-  gap: 10px;
-}
-
-#intro-logo {
-  width: 280px;
-  height: 280px;
-  object-fit: contain;
-  animation: logoMagic 5s ease-in-out forwards;
-  filter: drop-shadow(0 0 20px rgba(0, 195, 255, 0.6));
-  margin-left: 18%;
-}
-
-/* Removed large margin-left */
-#intro-text {
-  opacity: 0;
-  color: #ffffff;
-  white-space: nowrap;
-  font-weight: 600;
-  letter-spacing: 3px;
-  animation: textReveal 4s 4.2s ease-in-out forwards;
-}
-
-#intro-text h1, #intro-text h3 {
-  display: inline-block;
-  margin: 0 2px; /* Reduced spacing between letters */
-  vertical-align: middle;
-  background: linear-gradient(90deg, #00ff88, #00C3FF99, #ffffff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-#intro-text h1 {
-  font-size: 5rem;
-  font-family: 'Cinzel', serif;
-}
-
-#intro-text h3 {
-  font-size: 2rem;
-  font-family: 'Dancing Script', cursive;
-}
-
-/* Combined scale + move + float animation */
-@keyframes logoMagic {
-  0% {
-    transform: scale(10);
-    opacity: 0;
-    filter: drop-shadow(0 0 0px rgba(0, 195, 255, 0));
-  }
-  50% {
-    opacity: 1;
-    transform:  scale(2);
-    filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
-  }
-  50% {
-    opacity: 1;
-    transform: translate(150px) scale(1);
-    filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
-  }
-  
-}
-
-/* Text animates in from right */
-@keyframes textReveal {
-  0% {
-    transform: scale(1.0);
-    opacity: 0;
-  }
-
-  50% {
-    transform: translateX(180px);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(60px);
-    opacity: 1;
-  }
-}
+ 
 
 /* Magic logo effect */
 
@@ -353,7 +261,152 @@
      opacity: 0;
     transition: opacity 2.5s ease-in; /* ⬅️ slow fade-in */
   }
-  #page-content.show {
+  #page-
+  /* Intro section styles */
+  #intro-container {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    gap: 10px;
+  }
+
+  #intro-logo {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    animation: logoMagic 5s ease-in-out forwards;
+    filter: drop-shadow(0 0 20px rgba(0, 195, 255, 0.6));
+    margin-left: 18%;
+  }
+
+  #intro-text {
+    opacity: 0;
+    color: #ffffff;
+    white-space: nowrap;
+    font-weight: 600;
+    letter-spacing: 3px;
+    animation: textReveal 4s 4.2s ease-in-out forwards;
+  }
+
+  #intro-text h1, #intro-text h3 {
+    display: inline-block;
+    margin: 0 2px;
+    vertical-align: middle;
+    background: linear-gradient(90deg, #00ff88, #00C3FF99, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  #intro-text h1 {
+    font-size: 5rem;
+    font-family: 'Cinzel', serif;
+  }
+
+  #intro-text h3 {
+    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
+  }
+
+  @keyframes logoMagic {
+    0% {
+      transform: scale(10);
+      opacity: 0;
+      filter: drop-shadow(0 0 0px rgba(0, 195, 255, 0));
+    }
+    50% {
+      opacity: 1;
+      transform: scale(2);
+      filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+    }
+    100% {
+      opacity: 1;
+      transform: translate(150px) scale(1);
+      filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+    }
+  }
+
+  @keyframes textReveal {
+    0% {
+      transform: scale(1.0);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(180px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(60px);
+      opacity: 1;
+    }
+  }
+
+  /* Mobile Responsive Intro Section */
+  @media (max-width: 768px) {
+    #intro-container {
+      flex-direction: column;
+      padding: 20px;
+      height: 100vh;
+    }
+
+    #intro-logo {
+      width: 150px;
+      height: 150px;
+      margin-left: 0;
+      animation: logoMagicMobile 5s ease-in-out forwards;
+    }
+
+    #intro-text h1 {
+      font-size: 2.5rem;
+    }
+
+    #intro-text h3 {
+      font-size: 1.2rem;
+    }
+
+    @keyframes logoMagicMobile {
+      0% {
+        transform: scale(5);
+        opacity: 0;
+        filter: drop-shadow(0 0 0px rgba(0, 195, 255, 0));
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+        filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+      }
+    }
+
+    @keyframes textReveal {
+      0% {
+        transform: scale(1.0);
+        opacity: 0;
+      }
+      50% {
+        transform: translateX(0);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+     }content.show {
     opacity: 1;
   }
 

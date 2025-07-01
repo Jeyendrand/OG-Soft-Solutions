@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OG Soft Solutions – Online Project Center</title>
+<link rel="icon" href="logo.png" type="image/png" />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(90deg, #ff4e50, #f9d423);
+    color: #333;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeInBody 1s ease forwards;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .header-logo {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+
+  @keyframes fadeInBody {
+    to {
+      opacity: 1;
+    }
+  }
+
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+    animation-delay: 0.6s;
+  }
+
+  section:nth-of-type(2) { animation-delay: 0.8s; }
+  section:nth-of-type(3) { animation-delay: 1s; }
+  section:nth-of-type(4) { animation-delay: 1.2s; }
+  section:nth-of-type(5) { animation-delay: 1.4s; }
+  section:nth-of-type(6) { animation-delay: 1.6s; }
+
+  .scroll-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+  }
+  .scroll-images {
+    display: inline-block;
+    animation: scroll 20s linear infinite;
+  }
+  .scroll-images img {
+    height: 10%;
+    margin-right: 20px;
+  }
+  @keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  header {
+    background-color: #003366;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: slideDown 1s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  
+  nav {
+    background-color: #0055a5;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    animation: fadeIn 2s ease;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+    color: #ffdd57;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  section {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h2 {
+    font-size: 1.8rem;
+    color: #003366;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #0055a5;
+    padding-bottom: 0.5rem;
+  }
+  
+  ul {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  ul li {
+    margin-bottom: 0.6rem;
+  }
+  
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .feature-box {
+    background-color: #f0f4f7;
+    border-left: 6px solid #0055a5;
+    padding: 1.5rem;
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .faq-item {
+    background-color: #f9f9f9;
+    border-left: 5px solid #0055a5;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .faq-item:hover {
+    transform: scale(1.02);
+  }
+
+  .faq-answer {
+    display: none;
+    margin-top: 0.5rem;
+    color: #444;
+  }
+
+  .faq-item.open .faq-answer {
+    display: block;
+  }
+
+  .faq-item strong {
+    display: block;
+    color: #003366;
+  }
+
+  .contact-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .contact-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+
+  footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    animation: fadeIn 2s ease;
+  }
+
+ #intro-container {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+  gap: 10px;
+}
+
+#intro-logo {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  animation: logoMagic 5s ease-in-out forwards;
+  filter: drop-shadow(0 0 20px rgba(0, 195, 255, 0.6));
+  margin-left: 18%;
+}
+
+/* Removed large margin-left */
+#intro-text {
+  opacity: 0;
+  color: #ffffff;
+  white-space: nowrap;
+  font-weight: 600;
+  letter-spacing: 3px;
+  animation: textReveal 4s 4.2s ease-in-out forwards;
+}
+
+#intro-text h1, #intro-text h3 {
+  display: inline-block;
+  margin: 0 2px; /* Reduced spacing between letters */
+  vertical-align: middle;
+  background: linear-gradient(90deg, #00ff88, #00C3FF99, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+#intro-text h1 {
+  font-size: 5rem;
+  font-family: 'Cinzel', serif;
+}
+
+#intro-text h3 {
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+}
+
+/* Combined scale + move + float animation */
+@keyframes logoMagic {
+  0% {
+    transform: scale(10);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px rgba(0, 195, 255, 0));
+  }
+  50% {
+    opacity: 1;
+    transform:  scale(2);
+    filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+  }
+  50% {
+    opacity: 1;
+    transform: translate(150px) scale(1);
+    filter: drop-shadow(0 0 25px rgba(0, 195, 255, 0.8));
+  }
+  
+}
+
+/* Text animates in from right */
+@keyframes textReveal {
+  0% {
+    transform: scale(1.0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateX(180px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(60px);
+    opacity: 1;
+  }
+}
+
+/* Magic logo effect */
+
+
+
+  /* Page fade-in animation */
+  #page-content {
+     opacity: 0;
+    transition: opacity 2.5s ease-in; /* ⬅️ slow fade-in */
+  }
+  #page-content.show {
+    opacity: 1;
+  }
+
+  button {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+    }
+
+    #feedbackPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      padding: 30px;
+      z-index: 1000;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    #feedbackPopup input,
+    #feedbackPopup textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
+
+    .feedback-list {
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: left;
+    }
+
+    .feedback-item {
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #007BFF;
+      margin-bottom: 10px;
+      border-radius: 8px;
+    }
+
+    .feedback-item h4 {
+      margin: 0 0 5px;
+    }
+
+    .feedback-item p {
+      margin: 0;
+    }
+
+    .close-btn {
+      background-color: #ccc;
+      color: black;
+      margin-top: 10px;
+    }
+
+</style>
+</head>
+<body>
+  <div id="intro-container">
+    <img src="Images/logo.png" alt="Logo" id="intro-logo">
+    <div id="intro-text"><h1>OG -S</h1><h3><i>oft</i></h3><h1>&nbsp;S</h1><h3><i>olution</i></h3><h1>S</h1></div>
+  </div>
+
+  <div id="page-content" style="display: none;">
+  
+  <header>
+    <div class="header-content">
+      <img src="Images/logo2.png" alt="OG Soft Solutions Logo" class="header-logo">
+      <div>
+        <h1>OG Soft Solutions</h1>
+        <p>Your Trusted Online Academic Project Partner</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Our Domains</a>
+    <a href="#features">Why Us</a>
+    <a href="#process">Process</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p><strong>OG Soft Solutions</strong> is a virtual project development center, managed by two experienced developers, that provides fully online academic project services. Students can connect with us without needing to visit any physical office.</p>
+    <p>We focus on quality, affordability, and innovation. From ideation to deployment, we assist students in every phase of their academic projects with code walkthroughs, documentation, and explanation sessions.</p>
+    <p>Our mission is to empower students to succeed in their academics by delivering well-crafted, customized, and original project solutions.</p>
+  </section>
+
+  <section id="images">
+    <div class="scroll-container">
+      <div class="scroll-images">
+        <img src="Images/img1.jpg" alt="1" />
+        <img src="Images/img2.png" alt="2" />
+        <img src="Images/img3.png" alt="3" />
+        <img src="Images/img4.png" alt="4" />
+        <img src="Images/img5.png" alt="5" />
+  </div>
+</div>
+  </section>
+
+  <section id="services">
+    <h2>Our Domains</h2>
+    <ul>
+      <li>C & C++ Projects – Console & GUI Applications</li>
+      <li>Java Projects – Desktop, Web, and OOP-Based Systems</li>
+      <li>Python Projects – AI/ML, Web Automation, and Django</li>
+      <li>Web Design – HTML, CSS, JavaScript, Bootstrap</li>
+      <li>PHP Projects – CRUD, CMS, and ERP Applications</li>
+      <li>.NET Projects – Windows Forms & ASP.NET</li>
+    </ul>
+    <p>All project deliveries come with complete source code, help files, screen recordings, and documentation tailored to meet academic requirements.</p>
+    <p>We also assist with final year projects, mini projects, IEEE concept-based applications, database management projects, and real-world simulations.</p>
+  </section>
+
+  <section id="features">
+    <h2>Why Choose Us?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <h3>Completely Online</h3>
+        <p>No physical visits required. Everything is managed via WhatsApp and email.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Experienced Team</h3>
+        <p>Handled 200+ projects across various domains with 8+ years of expertise.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Affordable for Students</h3>
+        <p>We price projects keeping student budgets in mind with no compromise on quality.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Timely Delivery</h3>
+        <p>Prompt communication and committed delivery schedules ensure no last-minute stress.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Detailed Documentation</h3>
+        <p>Includes structured reports with diagrams, code explanations, and screenshots.</p>
+      </div>
+      <div class="feature-box">
+        <h3>Guidance Support</h3>
+        <p>One-on-one assistance through WhatsApp or Zoom for project understanding.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <h2>Our Process</h2>
+    <p>Here's how we work with students to deliver the best project experience:</p>
+    <ul>
+      <li>📩 Share your project topic or area of interest via WhatsApp or email.</li>
+      <li>📄 We confirm the scope and suggest the best approach and technology stack.</li>
+      <li>💬 After confirmation, we proceed to development and keep you updated.</li>
+      <li>📟️ You'll receive a video walkthrough, report files, and complete source code.</li>
+      <li>🧑‍🏫 One-on-one support available to explain and help you present your project.</li>
+    </ul>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <strong>Q: How do I place a project request?</strong>
+      <div class="faq-answer">A: Simply contact us on WhatsApp with your topic or preferred domain.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <strong>Q: Will I get the full source code?</strong>
+      <div class="faq-answer">A: Yes, you will get complete code, report files, and explanation support.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <strong>Q: How long will it take?</strong>
+      <div class="faq-answer">A: Most projects are delivered within 3 to 5 days based on complexity.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <strong>Q: Can I ask questions after delivery?</strong>
+      <div class="faq-answer">A: Absolutely. We support students even after delivery for clarification.</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Ready to start your project? Reach out to us:</p>
+    <ul>
+      <li><strong>WhatsApp:</strong> +91-9342448405</li>
+      <li><strong>Email:</strong> jeyendrandbsccs@gmail.com</li>
+      <li><strong>Instagram/Facebook:</strong> @ogsoftsolutions</li>
+    </ul>
+    <a class="contact-button" href="https://wa.me/+919342448405" target="_blank">Chat on WhatsApp</a>
+  </section>
+
+  <section id="feedback">
+    <h2>Feedback</h2>
+    <button onclick="openFeedbackForm()">Feedback</button>
+    <button onclick="showAllFeedbacks()">Show Feedback</button>
+
+    <!-- Feedback Popup -->
+    <div id="overlay"></div>
+    <div id="feedbackPopup">
+      <h3>Submit Your Feedback</h3>
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Feedback" rows="4" required></textarea>
+      <button onclick="submitFeedback()">Submit</button>
+      <button class="close-btn" onclick="closeFeedbackForm()">Cancel</button>
+    </div>
+
+    <!-- Feedback Display Section -->
+    <div class="feedback-list" id="feedbackList">
+      <!-- Feedbacks will appear here -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 OG Soft Solutions. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+<script>
+  // Optional: Force scroll to top and add small delay
+  window.onload = function () {
+    window.scrollTo(0, 0);
+    document.body.style.opacity = '1';
+  };
+
+   window.addEventListener("load", function () {
+      setTimeout(() => {
+        const intro = document.getElementById("intro-container");
+        const content = document.getElementById("page-content");
+        intro.style.display = "none";
+        content.style.display = "block";
+        setTimeout(() => {
+          content.classList.add("show");
+        }, 100);
+      }, 9500); // ⬅️ increased from 7500 to 9500ms (9.5 seconds total)
+    });
+
+   function openFeedbackForm() {
+      document.getElementById('overlay').style.display = 'block';
+      document.getElementById('feedbackPopup').style.display = 'block';
+    }
+
+    function closeFeedbackForm() {
+      document.getElementById('overlay').style.display = 'none';
+      document.getElementById('feedbackPopup').style.display = 'none';
+    }
+
+    function submitFeedback() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (name && email && message) {
+        const feedback = { name, email, message };
+        let feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+        feedbacks.push(feedback);
+        localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+        alert("Thank you for your feedback!");
+        closeFeedbackForm();
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
+      } else {
+        alert("Please fill all the fields.");
+      }
+    }
+
+    function showAllFeedbacks() {
+      const feedbackList = document.getElementById("feedbackList");
+      feedbackList.innerHTML = "<h2>All Feedbacks</h2>";
+      const feedbacks = JSON.parse(localStorage.getItem("feedbacks")) || [];
+
+      if (feedbacks.length === 0) {
+        feedbackList.innerHTML += "<p>No feedback submitted yet.</p>";
+        return;
+      }
+
+      feedbacks.forEach((fb) => {
+        const item = document.createElement("div");
+        item.className = "feedback-item";
+        item.innerHTML = `
+          <h4>${fb.name} <span style="font-size:14px; color: #777;">(${fb.email})</span></h4>
+          <p>${fb.message}</p>
+        `;
+        feedbackList.appendChild(item);
+      });
+    }
+
+</script>
